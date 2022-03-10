@@ -10,20 +10,22 @@ const WAGE_PER_HOUR = 20;
 let empHrs = 0;
 
 //UC1 - Check Employee is present or Absent or part time
-let empCheck = Math.floor(Math.random() * 3) ;
-switch (empCheck) {
-    case IS_ABSENT:
-        empHrs = 0;
-        break;
-    case IS_PART_TIME:
-        empHrs = PART_TIME_HOURS; 
-        break;
-    case IS_FULL_TIME:
-        empHrs = FULL_TIME_HOURS; 
-        break;
-    default:
-        break;
+function getWorkingHours(empCheck)
+{
+    switch (empCheck) {
+        case IS_ABSENT:
+            return 0;
+            break;
+       case IS_PART_TIME:
+           return PART_TIME_HOURS; 
+            break;
+        case IS_FULL_TIME:
+            return FULL_TIME_HOURS; 
+            break;
+    }
 }
 
+let empCheck = Math.floor(Math.random() * 3) ;
+empHrs=getWorkingHours(empCheck);
 let empWage = empHrs * WAGE_PER_HOUR; 
-console.log("Emp Wage: " + empWage);
+console.log("Emp Hrs: "+ empHrs +", Emp Wage: " + empWage);
