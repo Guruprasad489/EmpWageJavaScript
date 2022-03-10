@@ -8,9 +8,11 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 const NUM_OF_WORKING_DAYS= 20;
+const MAX_HRS_IN_MONTH=100;
 let empHrs = 0;
-monthlyEmpHrs = 0;
-monthlyEmpWage = 0;
+let totalEmpHrs = 0;
+let totalEmpWage = 0;
+let totalWorkingDays = 0;
 
 //UC1 - Check Employee is present or Absent or part time
 function getWorkingHours(empCheck)
@@ -28,13 +30,12 @@ function getWorkingHours(empCheck)
     }
 }
 
-for(let day=1; day<=NUM_OF_WORKING_DAYS; day++)
+while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
  {
+     totalWorkingDays++;
      let empCheck = Math.floor(Math.random() * 3);
      empHrs = getWorkingHours(empCheck);
-     monthlyEmpHrs += empHrs;
-     dailyEmpWage = empHrs * WAGE_PER_HOUR; 
-     monthlyEmpWage += dailyEmpWage; 
+     totalEmpHrs += empHrs;
  }
-
- console.log("Monthly Emp Hrs: "+ monthlyEmpHrs +", Monthly Emp Wage: " + monthlyEmpWage);
+totalEmpWage = totalEmpHrs * WAGE_PER_HOUR;
+console.log("UC5: Total days: "+ totalWorkingDays +", Total Emp Hrs: "+ totalEmpHrs +", Total Emp Wage: " + totalEmpWage);
