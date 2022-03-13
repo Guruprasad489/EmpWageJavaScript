@@ -14,6 +14,7 @@ let totalEmpHrs = 0;
 let totalEmpWage = 0;
 let totalWorkingDays = 0;
 let empDailyWageArr = new Array();
+let empDailyWageMap = new Map();
 
 //UC1 - Check Employee is present or Absent or part time
 function getWorkingHours(empCheck)
@@ -38,6 +39,7 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
      empHrs = getWorkingHours(empCheck);
      totalEmpHrs += empHrs;
      empDailyWageArr.push(CalculateWage(empHrs));
+     empDailyWageMap.set(totalWorkingDays, CalculateWage(empHrs));
  }
 
  function CalculateWage(empHrs)
@@ -105,3 +107,7 @@ function TotalDaysWorked(numOfDays, dailyWage){
     return numOfDays;
 }
 console.log("UC 7G: Number of days emp worked: " + empDailyWageArr.reduce(TotalDaysWorked, 0));
+
+//UC 8 - Storing daily wage in map
+console.log(empDailyWageMap);
+console.log("UC8 - Emp Wage map totalHrs: "+ Array.from(empDailyWageMap.values()).reduce(totalWages,0));
