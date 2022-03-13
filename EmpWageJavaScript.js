@@ -13,6 +13,7 @@ let empHrs = 0;
 let totalEmpHrs = 0;
 let totalEmpWage = 0;
 let totalWorkingDays = 0;
+let empDailyWageArr = new Array();
 
 //UC1 - Check Employee is present or Absent or part time
 function getWorkingHours(empCheck)
@@ -36,6 +37,14 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
      let empCheck = Math.floor(Math.random() * 3);
      empHrs = getWorkingHours(empCheck);
      totalEmpHrs += empHrs;
+     empDailyWageArr.push(CalculateWage(empHrs));
  }
-totalEmpWage = totalEmpHrs * WAGE_PER_HOUR;
-console.log("UC5: Total days: "+ totalWorkingDays +", Total Emp Hrs: "+ totalEmpHrs +", Total Emp Wage: " + totalEmpWage);
+
+ function CalculateWage(empHrs)
+ {
+     return empHrs * WAGE_PER_HOUR;
+ }
+console.log("Employee Daily Wages are: ");
+totalEmpWage = CalculateWage(totalEmpHrs);
+console.log(empDailyWageArr);
+console.log("UC6: Total days: "+ totalWorkingDays +", Total Emp Hrs: "+ totalEmpHrs +", Total Emp Wage: " + totalEmpWage);
